@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王小明的專業個人簡介 - 參考 LinkedIn 風格</title>
+    <title>Hồ sơ chuyên nghiệp - Hoàng Văn Hải</title>
     <style>
-        /* CSS 樣式 - 參考 LinkedIn 風格 */
+        /* Giữ nguyên các style cũ của bạn và thêm các style mới bên dưới */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f3f2ef; /* 淺灰色背景 */
+            background-color: #f3f2ef;
         }
 
         .container {
             width: 90%;
             max-width: 900px;
             margin: 20px auto;
-            background-color: #fff; /* 白色主要內容區 */
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         header {
-            background-image: url('data:image/jpeg;base64, ...'); /* 替換為你的背景圖片，或使用 CSS */
-            height: 200px; /* 調整背景高度 */
-            background-size: cover;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* Màu gradient chuyên nghiệp */
+            height: 200px;
             position: relative;
         }
 
@@ -36,204 +35,134 @@
             border-radius: 50%;
             border: 4px solid #fff;
             position: absolute;
-            bottom: -75px; /* 使頭像一半在背景上，一半在內容上 */
+            bottom: -75px;
             left: 20px;
+            object-fit: cover;
+            background-color: #eee;
         }
 
         .profile-header-info {
-            padding: 85px 20px 20px; /* 調整頂部填充，為頭像騰出空間 */
+            padding: 85px 20px 20px;
         }
 
         .profile-header-info h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 1.8em;
             color: #333;
         }
 
         .profile-header-info p.headline {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #555;
             margin-top: 5px;
         }
 
-        .profile-header-info p.location {
-            color: #777;
-            margin-top: 5px;
+        /* PHẦN MỚI: DỰ ÁN CÓ HÌNH ẢNH */
+        .featured-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
         }
 
-        .profile-header-info a.contact-info {
-            color: #0073b1; /* LinkedIn 藍色 */
-            text-decoration: none;
-            margin-top: 10px;
-            display: inline-block;
+        .project-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
 
-        main {
-            padding: 20px;
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
-        section {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee; /* 分割線 */
-            padding-bottom: 20px;
+        .project-image {
+            width: 100%;
+            height: 150px;
+            background-color: #ddd;
+            object-fit: cover;
         }
 
-        section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
+        .project-info {
+            padding: 12px;
         }
 
-        h2 {
-            font-size: 1.5em;
-            color: #333;
-            margin-top: 0;
+        .project-info h3 {
+            font-size: 1.1em;
+            margin: 0 0 8px 0;
+            color: #0073b1;
         }
 
-        h3 {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 5px;
-        }
+        main { padding: 20px; }
+        section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        h2 { font-size: 1.4em; color: #333; border-left: 4px solid #0073b1; padding-left: 10px; }
 
-        h4 {
-            font-size: 1em;
-            color: #777;
-            margin-bottom: 10px;
-        }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; }
+        .skills-list li { background-color: #f3f2ef; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; }
 
-        p {
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 20px;
-        }
-
-        /* 技能 section 特別樣式 */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skills-list li {
-            background-color: #f3f2ef;
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-
-        /* 頁腳 */
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            background-color: #f3f2ef;
-        }
+        footer { text-align: center; padding: 20px; color: #888; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <img class="profile-pic" src="path_to_your_photo.jpg" alt="王小明的個人相片"> 
-            </header>
+            <img class="profile-pic" src="https://via.placeholder.com/150" alt="Hoàng Văn Hải"> 
+        </header>
 
         <div class="profile-header-info">
-            <h1>王小明</h1>
-            <p class="headline">專業全棧工程師 | 雲端架構師 | 10 年經驗</p>
-            <p class="location">台灣，台北市</p>
-            <a href="#" class="contact-info">聯絡方式</a>
+            <h1>Hoàng Văn Hải</h1>
+            <p class="headline">Chuyên gia Mô phỏng 3D | Lập trình viên Full-stack | Học viên Ngôn ngữ</p>
+            <p class="location">Hà Nội, Việt Nam</p>
+            <a href="mailto:your-email@example.com" class="contact-info" style="color: #0073b1; text-decoration: none; font-weight: bold;">Liên hệ trực tiếp</a>
         </div>
 
         <main>
             <section id="about">
-                <h2>關於</h2>
+                <h2>Giới thiệu</h2>
                 <p>
-                    我是王小明，一位擁有 10 年經驗的專業全棧工程師和雲端架構師。我熱衷於使用現代技術構建可擴展、高效且可靠的軟體解決方案。我的專業領域包括前端開發 (React, Vue), 後端開發 (Node.js, Go), 雲端平台 (AWS, Azure) 以及 DevOps 實踐 (Docker, Kubernetes)。我致力於不斷學習和探索新技術，以協助企業實現其技術目標。
+                    Tôi là một người đam mê công nghệ với sự kết hợp giữa tư duy lập trình và thẩm mỹ đồ họa 3D. 
+                    Hiện tại, tôi đang tập trung vào việc phát triển các không gian triển lãm ảo và tối ưu hóa trải nghiệm người dùng trên nền tảng web.
                 </p>
             </section>
 
-            <section id="experience">
-                <h2>經驗</h2>
-                <div class="experience-item">
-                    <h3>高級全棧工程師</h3>
-                    <h4>Acme Inc. | 2018 年 - 至今</h4>
-                    <p>
-                        負責開發和維護 Acme Inc. 的旗艦 Web 應用程序，使用 React, Node.js, and AWS ES6+ 以及現代 Web 開發技術。
-                    </p>
-                    <ul>
-                        <li>領導一個由 5 人組成的團隊，負責項目的架構設計和代碼審查。</li>
-                        <li>實施了微服務架構，提高了系統的可擴展性和可維護性。</li>
-                        <li>使用 Docker and Kubernetes 實現了自動化部署和持續集成。</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <h3>軟體工程師</h3>
-                    <h4>Innovate Solutions | 2015 年 - 2018 年</h4>
-                    <p>
-                        參與 Innovate Solutions 的移動應用程序開發，使用 Flutter, Firebase 和 Google Cloud Platform 進行。
-                    </p>
-                    <ul>
-                        <li>優化了應用程序的性能，使加載時間減少了 50%。</li>
-                        <li>實施了持續集成和持續部署 (CI/CD) 流程，縮短了發布週期。</li>
-                        <li>與 UI/UX 設計師密切合作，確保用戶體驗的滿意度。</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="education">
-                <h2>教育</h2>
-                <div class="education-item">
-                    <h3>國立台灣大學</h3>
-                    <h4>資訊工程研究所 | 2013 年 - 2015 年</h4>
-                    <p>主修資訊工程，獲得碩士學位。</p>
-                </div>
-                <div class="education-item">
-                    <h3>國立交通大學</h3>
-                    <h4>資訊工程學系 | 2009 年 - 2013 年</h4>
-                    <p>主修資訊工程，獲得學士學位。</p>
+            <section id="projects">
+                <h2>Dự án nổi bật</h2>
+                <div class="featured-section">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/300x150" alt="3D Exhibition" class="project-image">
+                        <div class="project-info">
+                            <h3>Triển lãm ảo Virsody</h3>
+                            <p style="font-size: 0.9em;">Thiết kế không gian trưng bày 3D và tối ưu hóa file .glb cho trải nghiệm mượt mà trên trình duyệt.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/300x150" alt="Personal Branding" class="project-image">
+                        <div class="project-info">
+                            <h3>Thiết kế Logo 3D cá nhân</h3>
+                            <p style="font-size: 0.9em;">Sử dụng SculptGL và Tripo3D để tạo ra bộ nhận diện thương hiệu dưới dạng mô hình số hóa.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <section id="skills">
-                <h2>技能</h2>
+                <h2>Kỹ năng & Công cụ</h2>
                 <ul class="skills-list">
-                    <li>Java</li>
-                    <li>Kotlin</li>
-                    <li>C/C++</li>
-                    <li>Python</li>
-                    <li>JavaScript</li>
-                    <li>TypeScript</li>
-                    <li>React</li>
-                    <li>Vue</li>
-                    <li>Node.js</li>
-                    <li>Go</li>
-                    <li>AWS</li>
-                    <li>Azure</li>
-                    <li>Docker</li>
-                    <li>Kubernetes</li>
-                    <li>DevOps</li>
-                    <li>Agile Methodology</li>
+                    <li>HTML/CSS/JS</li>
+                    <li>3D Modeling (SculptGL)</li>
+                    <li>Tripo3D</li>
+                    <li>Virsody Platform</li>
+                    <li>Tiếng Trung (Practical Audio-Visual)</li>
+                    <li>Thiết kế UI/UX</li>
                 </ul>
             </section>
         </main>
     </div>
 
     <footer>
-        <p>&copy; 2023 王小明. 保留所有權利.</p>
+        <p>&copy; 2026 Hoàng Văn Hải. Bản quyền được bảo lưu.</p>
     </footer>
 
 </body>
