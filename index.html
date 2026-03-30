@@ -1,277 +1,289 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOANG THI HUYEN - 專業個人簡介 | LinkedIn 風格</title>
+    <title>HOANG THI HUYEN | Hồ sơ chuyên nghiệp</title>
     <style>
-        /* --- 基礎樣式 (類似 LinkedIn 配色) --- */
+        /* --- Định nghĩa hệ màu & Biến số (Chuẩn LinkedIn) --- */
         :root {
-            --bg-color: #F3F6F8; /* 淺灰背景 */
+            --linkedin-blue: #0A66C2;
+            --linkedin-dark: #004182;
+            --bg-body: #F3F6F8; /* Màu nền xám nhạt */
             --white: #FFFFFF;
-            --text-main: #000000;
-            --text-secondary: rgba(0, 0, 0, 0.6);
-            --link-color: #0A66C2; /* LinkedIn 藍 */
-            --border-color: #E0E0E0;
+            --text-main: rgba(0,0,0,0.9); /* Đen gần tuyệt đối */
+            --text-sub: rgba(0,0,0,0.6); /* Xám cho tít phụ */
+            --border: #E0E0E0;
             --shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.12);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* Reset cơ bản */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
-            background-color: var(--bg-color);
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.5;
-            padding-bottom: 50px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Làm mượt chữ trên Mac */
         }
 
-        /* --- 版面配置 --- */
         .container {
-            max-width: 1128px; /* LinkedIn 標準寬度 */
-            margin: 0 auto;
-            padding: 0 20px;
+            max-width: 1128px; /* Chiều rộng chuẩn LinkedIn */
+            margin: 24px auto;
+            padding: 0 16px; /* Padding cho mobile */
         }
 
-        /* --- 通用卡片樣式 --- */
+        /* --- Style chung cho các thẻ Card --- */
         .card {
-            background-color: var(--white);
-            border-radius: 8px;
+            background: var(--white);
+            border-radius: 10px;
             box-shadow: var(--shadow);
             margin-bottom: 20px;
-            overflow: hidden; 
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
         .card-header {
-            padding: 20px 24px 0 24px;
+            padding: 20px 24px 0;
             font-size: 20px;
             font-weight: 600;
         }
 
-        .card-content {
-            padding: 24px;
-        }
+        .card-content { padding: 20px 24px; }
 
-        /* --- 頂部個人資訊區 --- */
-        .profile-header-card {
-            position: relative;
-        }
-
+        /* =========================================
+           --- Phần đầu trang (Profile Header) ---
+           ĐÂY LÀ PHẦN QUAN TRỌNG ĐỂ FIX LỖI CHỒNG CHÉO
+           ========================================= */
         .banner {
             height: 200px;
-            background: linear-gradient(135deg, #A0B4CB 0%, #708090 100%); 
-            background-size: cover;
-            background-position: center;
-        }
-
-        .profile-info-wrapper {
-            padding: 0 24px 24px 24px;
+            /* Gradient màu xám xanh chuyên nghiệp */
+            background: linear-gradient(to right, #A0B4CB, #708090);
             position: relative;
         }
 
-        .profile-photo-container {
+        .profile-main {
+            padding: 0 24px 24px;
+            position: relative;
+            /* Sử dụng Flexbox để quản lý bố cục */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container chứa ảnh đại diện */
+        .avatar-container {
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
-            background-color: var(--white);
+            border: 4px solid var(--white); /* Viền trắng dày */
+            background: #E9EDF0; /* Màu nền khi chưa load ảnh */
             position: absolute;
-            top: -110px; 
+            top: -100px; /* Đẩy ảnh lên trên banner */
             left: 24px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Đổ bóng cho ảnh */
+            z-index: 10; /* Đảm bảo ảnh luôn nằm trên */
         }
 
-        .profile-photo {
+        .avatar-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Giữ tỷ lệ ảnh */
         }
 
-        .basic-info {
-            margin-top: 60px; 
-            max-width: 700px;
-        }
-
-        .name {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .headline {
-            font-size: 16px;
-            color: var(--text-main);
-            margin-top: 4px;
-        }
-
-        .location-contact {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 8px;
-        }
-
-        .location-contact a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .action-buttons {
-            margin-top: 16px;
+        /* Phần chứa Tên và Chức danh */
+        .info-section {
+            /* TẠO KHOẢNG TRỐNG CỐ ĐỊNH PHÍA TRÊN */
+            /* Margin-top này phải đủ lớn để chứa phần ảnh đè xuống */
+            margin-top: 70px; /* (160px/2) + khoảng cách an toàn */
             display: flex;
-            gap: 8px;
+            flex-direction: column;
+            gap: 4px; /* Khoảng cách giữa các dòng chữ */
         }
 
+        .name { font-size: 26px; font-weight: 600; }
+        .headline { font-size: 18px; color: var(--text-main); font-weight: 400; }
+        .sub-info { font-size: 14px; color: var(--text-sub); margin-top: 4px; }
+
+        /* --- Nhóm nút bấm --- */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap; /* Tự xuống dòng trên mobile hẹp */
+        }
+        
         .btn {
-            padding: 6px 16px;
-            border-radius: 16px;
+            padding: 8px 24px;
+            border-radius: 24px; /* Bo tròn nhiều hơn kiểu LinkedIn mới */
             font-weight: 600;
-            font-size: 16px;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease-in-out;
+            font-size: 16px;
+            text-align: center;
         }
-
+        
+        /* Nút chính (Xanh) */
         .btn-primary {
-            background-color: var(--link-color);
-            color: var(--white);
+            background: var(--linkedin-blue);
+            color: white;
             border: none;
         }
-
-        .btn-secondary {
-            background-color: var(--white);
-            color: var(--link-color);
-            border: 1px solid var(--link-color);
+        .btn-primary:hover { background: var(--linkedin-dark); }
+        
+        /* Nút phụ (Viền xanh) */
+        .btn-outline {
+            border: 1px solid var(--linkedin-blue);
+            color: var(--linkedin-blue);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: #E8F3FF;
+            border-width: 2px;
+            padding: 7px 23px; /* Điều chỉnh padding khi tăng viền */
         }
 
-        /* --- 經歷/學歷項目 --- */
-        .experience-item, .education-item {
-            display: flex;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border-color);
+        /* --- Kinh nghiệm / Học vấn --- */
+        .item { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+        .item-logo {
+            width: 48px; height: 48px; background: #f0f2f5;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; border-radius: 4px; border: 1px solid var(--border);
         }
+        .item-detail h4 { font-size: 16px; font-weight: 600; color: var(--text-main); }
+        .item-detail p { font-size: 14px; color: var(--text-sub); }
 
-        .experience-item:last-child, .education-item:last-child {
-            border-bottom: none;
-        }
-
-        .company-logo, .school-logo {
-            width: 48px;
-            height: 48px;
-            margin-right: 12px;
-            flex-shrink: 0;
-            background-color: #F3F6F8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #708090;
-            font-size: 20px;
-        }
-
-        .item-details .title {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .skills-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .skill-item {
+        /* --- Kỹ năng (Tags) --- */
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+        .skill-tags li {
+            border: 1px solid var(--text-sub);
+            padding: 6px 18px;
+            border-radius: 20px;
             font-size: 14px;
             font-weight: 600;
-            padding: 8px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
+            color: var(--text-sub);
+            transition: all 0.2s;
+        }
+        .skill-tags li:hover {
+            background: var(--bg-body);
+            border-color: var(--text-main);
+            color: var(--text-main);
         }
 
+        /* =========================================
+           --- Xử lý Responsive (Mobile) ---
+           ĐÂY LÀ NƠI FIX LỖI CHỒNG CHÉO TRÊN MOBILE
+           ========================================= */
         @media (max-width: 768px) {
-            .profile-photo-container {
-                width: 100px;
-                height: 100px;
-                top: -60px;
-                left: calc(50% - 50px);
+            .banner { height: 140px; } /* Giảm chiều cao banner */
+            
+            .avatar-container {
+                width: 130px; /* Giảm kích thước ảnh */
+                height: 130px;
+                top: -65px; /* Đẩy lên 1/2 chiều cao mới */
+                left: 50%; /* Căn giữa theo chiều ngang */
+                transform: translateX(-50%); /* Kỹ thuật căn giữa tuyệt đối */
             }
-            .basic-info {
-                text-align: center;
+            
+            .info-section {
+                text-align: center; /* Chữ căn giữa trên mobile */
+                /* TĂNG KHOẢNG CÁCH PHÍA TRÊN CHO MOBILE */
+                margin-top: 80px; /* Cần margin lớn hơn vì chữ căn giữa nằm dưới ảnh */
+                align-items: center; /* Căn giữa các item bên trong flex */
             }
-            .action-buttons {
-                justify-content: center;
+            
+            .name { font-size: 24px; }
+            .headline { font-size: 16px; }
+            
+            .btn-group {
+                justify-content: center; /* Căn giữa nhóm nút */
+                width: 100%;
             }
+            .btn { width: 100%; max-width: 300px; } /* Nút bấm dài ra trên mobile */
         }
     </style>
 </head>
 <body>
 
-    <div style="height: 24px;"></div>
-
-    <div class="container">
-        <div class="card profile-header-card">
-            <div class="banner"></div>
-            <div class="profile-info-wrapper">
-                <div class="profile-photo-container">
-                    <img src="images/1.jpg" class="profile-photo" alt="HOANG THI HUYEN">
+<div class="container">
+    <div class="card">
+        <div class="banner"></div>
+        <div class="profile-main">
+            <div class="avatar-container">
+                <img src="https://via.placeholder.com/160" alt="HOANG THI HUYEN">
+            </div>
+            
+            <div class="info-section">
+                <h1 class="name">HOANG THI HUYEN</h1>
+                <p class="headline">Senior Project Manager | Digital Transformation Consultant</p>
+                <p class="sub-info">Hà Nội, Việt Nam • <a href="#contact" style="color:var(--linkedin-blue); text-decoration:none; font-weight:600;">Thông tin liên hệ</a></p>
+                
+                <div class="btn-group">
+                    <a href="mailto:huyen.hoang@example.com" class="btn btn-primary">Kết nối ngay</a>
+                    <a href="#" class="btn btn-outline">Tải hồ sơ (PDF)</a>
                 </div>
-
-                <div class="basic-info">
-                    <h1 class="name">HOANG THI HUYEN</h1>
-                    <div class="headline">您的專業職稱 | 您擅長的領域 | 核心價值</div>
-                    <div class="location-contact">
-                        台灣台北市 &middot;
-                        <a href="#contact">聯絡方式</a>
-                    </div>
-                    
-                    <div class="action-buttons">
-                        <a href="mailto:your.email@example.com" class="btn btn-primary">與我聯絡</a>
-                        <a href="#" class="btn btn-secondary">下載履歷</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">關於</div>
-            <div class="card-content">
-                <p style="font-size: 14px; white-space: pre-line;">
-                    您好，我是 **HOANG THI HUYEN**。
-                    這裡可以填寫您的自我介紹、工作熱情以及過去取得的成就。
-                </p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">專業技能</div>
-            <div class="card-content">
-                <ul class="skills-list">
-                    <li class="skill-item">專案管理</li>
-                    <li class="skill-item">數據分析</li>
-                    <li class="skill-item">跨部門溝通</li>
-                    <li class="skill-item">Python</li>
-                    <li class="skill-item">Office 應用</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card" id="contact">
-            <div class="card-header">聯絡方式</div>
-            <div class="card-content">
-                <p style="font-size: 14px;">
-                    如果您對我的背景感興趣，歡迎透過以下方式與我聯繫：<br><br>
-                    Email: <a href="mailto:your.email@example.com" style="color:var(--link-color); text-decoration:none;">your.email@example.com</a><br>
-                    LinkedIn: <a href="#" style="color:var(--link-color); text-decoration:none;">HOANG THI HUYEN 的個人主頁</a>
-                </p>
             </div>
         </div>
     </div>
+
+    <div class="card">
+        <div class="card-header">Giới thiệu</div>
+        <div class="card-content">
+            <p>
+                Tôi là <strong>Hoàng Thị Huyền</strong>, một chuyên gia tận tâm với hơn [X] năm kinh nghiệm trong lĩnh vực Quản lý dự án và Tư vấn chuyển đổi số. 
+                Thế mạnh của tôi là khả năng kết hợp giữa tư duy chiến lược và thực thi chi tiết, luôn lấy hiệu quả kinh doanh của khách hàng làm trọng tâm. 
+                Tôi mong muốn tìm kiếm những cơ hội合作 hợp tác mới để cùng tạo ra những tác động tích cực cho cộng đồng doanh nghiệp.
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Kinh nghiệm làm việc</div>
+        <div class="card-content">
+            <div class="item">
+                <div class="item-logo">🏢</div>
+                <div class="item-detail">
+                    <h4>Senior Project Manager</h4>
+                    <p>FPT Software • Toàn thời gian</p>
+                    <p>Tháng 01/2022 - Hiện tại</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-logo">🏢</div>
+                <div class="item-detail">
+                    <h4>Project Manager</h4>
+                    <p>Vingroup (VinID)</p>
+                    <p>Tháng 06/2019 - Tháng 12/2021</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Kỹ năng chuyên môn</div>
+        <div class="card-content">
+            <ul class="skill-tags">
+                <li>Agile & Scrum</li>
+                <li>Strategic Planning</li>
+                <li>Digital Transformation</li>
+                <li>Risk Management</li>
+                <li>Stakeholder Management</li>
+                <li>English (Fluent)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card" id="contact">
+        <div class="card-header">Thông tin liên hệ</div>
+        <div class="card-content">
+            <p style="margin-bottom: 8px;">📧 <strong>Email:</strong> huyen.hoang@example.com</p>
+            <p style="margin-bottom: 8px;">🔗 <strong>LinkedIn:</strong> linkedin.com/in/hoangthihuyen</p>
+            <p>📍 <strong>Địa chỉ:</strong> Quận Cầu Giấy, Hà Nội</p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
