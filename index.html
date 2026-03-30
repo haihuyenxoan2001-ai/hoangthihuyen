@@ -1,157 +1,86 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hồ sơ chuyên nghiệp - HOÀNG THỊ HUYỀN</title>
+    <title>HOANG THI HUYEN - 專業個人簡介 | LinkedIn 風格</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+        /* --- 基礎樣式 (類似 LinkedIn 配色) --- */
+        :root {
+            --bg-color: #F3F6F8; /* 淺灰背景 */
+            --white: #FFFFFF;
+            --text-main: #000000;
+            --text-secondary: rgba(0, 0, 0, 0.6);
+            --link-color: #0A66C2; /* LinkedIn 藍 */
+            --border-color: #E0E0E0;
+            --shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f3f2ef;
-            color: #333;
         }
 
+        body {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 50px;
+        }
+
+        /* --- 版面配置 --- */
         .container {
-            width: 95%;
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow: hidden;
+            max-width: 1128px; /* LinkedIn 標準寬度 */
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        header {
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
-            height: 200px;
+        /* --- 通用卡片樣式 --- */
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            overflow: hidden; 
+        }
+
+        .card-header {
+            padding: 20px 24px 0 24px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        /* --- 頂部個人資訊區 --- */
+        .profile-header-card {
             position: relative;
         }
 
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            position: absolute;
-            bottom: -75px;
-            left: 40px;
-            object-fit: cover;
-            background-color: #eee;
+        .banner {
+            height: 200px;
+            background: linear-gradient(135deg, #A0B4CB 0%, #708090 100%); 
+            background-size: cover;
+            background-position: center;
         }
 
-        .profile-header-info {
-            padding: 90px 40px 30px;
-            border-bottom: 1px solid #e0e0e0;
+        .profile-info-wrapper {
+            padding: 0 24px 24px 24px;
+            position: relative;
         }
 
-        .profile-header-info h1 {
-            margin: 0;
-            font-size: 2em;
-            text-transform: uppercase; /* Giữ định dạng chữ in hoa như bạn yêu cầu */
-        }
-
-        .profile-header-info p.headline {
-            font-size: 1.2em;
-            color: #666;
-            margin: 8px 0;
-        }
-
-        .content-section {
-            padding: 20px 40px;
-        }
-
-        .featured-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .project-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: #fff;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .project-image {
-            width: 100%;
+        .profile-photo-container {
+            width: 160px;
             height: 160px;
-            background-color: #ddd;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 15px;
-        }
-
-        .project-info h3 {
-            font-size: 1.1em;
-            margin: 0 0 8px 0;
-            color: #0073b1;
-        }
-
-        .project-info p {
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.4;
-            margin: 0;
-        }
-
-        @media (max-width: 600px) {
-            .profile-pic {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .profile-header-info {
-                text-align: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <header>
-        <img src="https://via.placeholder.com/150" alt="HOÀNG THỊ HUYỀN" class="profile-pic">
-    </header>
-
-    <div class="profile-header-info">
-        <h1>HOÀNG THỊ HUYỀN</h1>
-        <p class="headline">Software Developer | UI/UX Designer | Cloud Architect</p>
-    </div>
-
-    <div class="content-section">
-        <h2>Dự án nổi bật</h2>
-        <div class="featured-section">
-            <a href="#" class="project-card">
-                <img src="https://via.placeholder.com/300x160" alt="Project 1" class="project-image">
-                <div class="project-info">
-                    <h3>Hệ thống Quản lý</h3>
-                    <p>Mô tả ngắn gọn về dự án của bạn tại đây.</p>
-                </div>
-            </a>
-            <a href="#" class="project-card">
-                <img src="https://via.placeholder.com/300x160" alt="Project 2" class="project-image">
-                <div class="project-info">
-                    <h3>Giao diện Sáng tạo</h3>
-                    <p>Thiết kế tập trung vào trải nghiệm người dùng hiện đại.</p>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+            background-color: var(--white);
+            position: absolute;
+            top: -110px; 
+            left: 24px;
+            overflow: hidden;
